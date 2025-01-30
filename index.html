@@ -11,9 +11,9 @@
 		<div id="plot"></div>
 		<script>
 	            // Data dari API
-	            var url = 'https://api.open-meteo.com/v1/forecast?latitude=-0.46&longitude=117.14&hourly=temperature_2m,precipitation_probability,weathercode,surface_pressure,cloudcover_high&forecast_days=3&timezone=Asia%2FSingapore';
-
-	            // Ambil data dari API
+	            var url = 'https://api.open-meteo.com/v1/forecast?latitude=-0.46&longitude=117.14&hourly=temperature_2m,precipitation_probability,weathercode,surface_pressure,cloudcover_high&forecast_days=3';
+				
+				// Ambil data dari API
 	            fetch(url)
 	            .then(response => response.json())
 	            .then(data => {
@@ -36,8 +36,6 @@
 					
 					// Mengatur sumbu x dengan jam
 					var hours = Array.from({length: 72}, (_, i) => i + 1);
-					
-
 					
 					//Data untuk plot kode cuaca
 					var trace0 = {
@@ -125,7 +123,7 @@
 					// Konfigurasi layout plot	
 					
 					var layout = {
-						title: 'Forecast Cuaca Selama 3 Hari',
+						title: 'Forecast Cuaca Samarinda Selama 3 Hari',
 						xaxis: {
 							title: 'Jam',
 							tickvals: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72], // Menyertakan jam 0, 24, 48, dan 72
@@ -148,15 +146,14 @@
 							//x: 1,
 							//y: 1
 						},
-						autosize: true
-						//autosize: false,
-						//width: 600,
-						//height: 450
-
+						autosize: true,
+						//width: 640,
+						//height: 400
 					};
 		
 					// Menampilkan plot
-					Plotly.newPlot('plot', [trace0, trace1, trace2, trace3, trace4, garis, garis24, garis48], layout, {responsive: true});
+					Plotly.newPlot('plot', [trace0, trace1, trace2, trace3, trace4, garis, garis24, garis48
+					], layout, {responsive: true});
 				})
 			.catch(error => console.error(error));
 		</script>
